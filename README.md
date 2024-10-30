@@ -15,8 +15,8 @@ This script automates the process of extracting a VMDK file from an OVA archive,
 1. **Clone the repository** to your Proxmox machine:
 
     ```bash
-    git clone <URL_of_your_repository>
-    cd <repository_name>
+    git clone https://github.com/flavioscg/my_proxmox_scripts.git
+    cd my_proxmox_scripts/
     ```
 
 2. **Make the script executable**:
