@@ -8,9 +8,13 @@ QCOW2_FILE_NAME="$(basename "${OVA_FILE%.*}").qcow2"
 echo "Estrazione di $OVA_FILE in $TEMP_DIR..."
 tar -xf "$OVA_FILE" -C "$TEMP_DIR"
 
-for file in "$TEMP_DIR"/*.vmdk; do
-    VMDK_FILE="$file"
-    break
+for file in "$TEMP_DIR"/*.vmdk.gz; do
+    if [[ -f "$file" ]]; then
+        echo "Decompressione di $file..."
+        gunzip "$file"
+        VMDK_FILE="${file%.gz}"
+        break
+    fi
 done
 
 if [ -z "$VMDK_FILE" ]; then
