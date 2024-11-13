@@ -18,6 +18,15 @@ for file in "$TEMP_DIR"/*.vmdk.gz; do
 done
 
 if [ -z "$VMDK_FILE" ]; then
+    for file in "$TEMP_DIR"/*.vmdk; do
+        if [[ -f "$file" ]]; then
+            VMDK_FILE="$file"
+            break
+        fi
+    done
+fi
+
+if [ -z "$VMDK_FILE" ]; then
     echo "File VMDK non trovato."
     rm -rf "$TEMP_DIR"
     exit 1
